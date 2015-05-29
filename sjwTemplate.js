@@ -1,6 +1,7 @@
-function Sjw(triggers) {
+function Sjw(triggers, confBias) {
     this.triggers = triggers;
     this.compensation = 0;
+    this.confirmationBias = confBias;
 
     this.buildCompensation = function() {
         this.compensation = 0;
@@ -25,14 +26,26 @@ function Sjw(triggers) {
             }
         }
     };
+    
+    this.sanatizePosts = function(posts) {
+        for(var i in posts) {
+            for(var x in this.confirmationBias) {
+                if(posts[i] === this.confirmationBias[x]) {
+                    posts.splice(i, 1);
+                }
+            }
+        }
+        return posts;
+    };
 
     this.scanPosts = function(posts) {
+        var output = this.sanatizePosts(posts);
         while(this.compensation > 5) {
-            for(var i in posts) {
+            for(var i in output) {
                 for(var x in this.triggers) {
-                    if(this.triggers[x] === posts[i]) {
+                    if(this.triggers[x] === output[i]) {
                         this.buildCompensation();
-                        return console.log(posts[i] + " rly offends me!");
+                        return console.log(posts[i] + " give me ptsd!");
                     } else {
                         this.compensation -= 1;
                     }
@@ -44,6 +57,6 @@ function Sjw(triggers) {
     };
 }
 
-var felicia = new Sjw(["these are my base triggers", "right now I am a chill person", "and not heavily compensating"]);
-felicia.addTriggers("new things to get upset over", "becoming a ptsd trainwreck", "getting worse", "opinions");
-felicia.scanPosts(["other things", "opinions", "other stuff"]);
+var socJusBob = new Sjw(["these are my base triggers", "right now I am a chill person", "and not heavily compensating"], ["crazy ideas", "more crazy ideas"]);
+socJusBob.addTriggers("new things to get upset over", "becoming a ptsd trainwreck", "getting worse", "opinions");
+socJusBob.scanPosts(["other things", "opinions", "other stuff", "crazy ideas", "more crazy ideas"]);
