@@ -22,13 +22,24 @@ function Anewobject() {
 Anewobject.prototype = new Object();
 var newObj = new Anewobject();
 
+newObj.fib = function(n) {
+    var a = 0, b = 1, c = 1;
+    for(var i = 2; i <= n; i++) {
+        c = a + b;
+        a = b;
+        b = c;
+    }
+    return c;
+};
+
 newObj.aNewMethod = function() {
     var output = [];
     for(var i in arguments) {
         i += 5;
+        i = this.fib(i);
         output.push(this.outerMethod(i));
     }
     return output;
 };
 
-newObj.aNewMethod(1, 2, 3, 4);
+newObj.aNewMethod(1, 2, 3, 4, 5);
