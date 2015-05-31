@@ -1,19 +1,17 @@
 function Sjw(triggers, confBias) {
     this.triggers = triggers;
-    this.compensation = 0;
+    this.compensation = this.buildCompensation();
     this.confirmationBias = confBias;
-
-    this.buildCompensation = function() {
-        this.compensation = 0;
-        if(this.triggers) {
-            for(var i in this.triggers) {
-                this.compensation += 1;
-            }
-        }
-    };
-
-    this.buildCompensation();
 }
+
+Sjw.prototype.buildCompensation = function() {
+    this.compensation = 0;
+    if(this.triggers) {
+        for(var i in this.triggers) {
+            this.compensation += 1;
+        }
+    }
+};
 
 Sjw.prototype.addTriggers = function() {
     for(var i = 0; i < arguments.length; i++) {
