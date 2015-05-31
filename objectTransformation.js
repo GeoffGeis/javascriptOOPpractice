@@ -8,15 +8,11 @@ function Object() {
 }
 
 Object.prototype.outerMethod = function(num) {
-    return this.property.propertieS.method(5) * num;
+    return this.property.propertieS.method(num) * num;
 };
 
-var obj = new Object();
-var output = obj.property.propertieS.method(5);
-obj.outerMethod(output);
-
 function ANewObject() {
-    this.newProperty = "foo"
+    this.newProperty = "foo";
 }
 
 ANewObject.prototype = new Object();
