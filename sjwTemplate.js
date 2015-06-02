@@ -1,7 +1,8 @@
 function Sjw(triggers, confBias) {
     this.triggers = triggers;
     this.confirmationBias = confBias;
-    this.compensation = this.buildCompensation();
+    this.compensation = 0;
+    this.buildCompensation();
 }
 
 Sjw.prototype.buildCompensation = function() {
