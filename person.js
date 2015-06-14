@@ -7,7 +7,7 @@ function Person(race, sex, environment, orientation, peers) {
 
 Person.prototype.develoup = function(race, sex, environment, peers) {
     if(this.orientation === 'cis') {
-        return this.raceCheck(race, sex, environment, peers);
+        return this.combine(race, sex, peers.environment);
     } else {
         if(this.sex === peers.sex) {
             return this.raceCheck(race, sex, environment, peers);
