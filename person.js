@@ -2,7 +2,7 @@ function Person(race, sex, environment, orientation, peers) {
     this.race = race;
     this.sex = sex;
     this.orientation = orientation;
-    this.associateWith = this.develoup(race, sex, environment, peers);
+    this.associateAs = this.develoup(race, sex, environment, peers);
 }
 
 Person.prototype.develoup = function(race, sex, environment, peers) {
@@ -39,4 +39,4 @@ var bobFriend = {
     orientation:  "cis" 
 };
 var bob = new Person("african", "male", "middleclass", "trans", bobFriend);
-bob.associateWith;
+bob.associateAs;
