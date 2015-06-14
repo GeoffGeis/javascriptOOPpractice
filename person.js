@@ -29,7 +29,7 @@ Person.prototype.raceCheck = function(race, sex, environment, peers) {
 };
 
 Person.prototype.combine = function(race, sex, environment) {
-    return race + ' ' + sex + ' ' + environment;
+    return race + ' ' + environment + ' ' + sex;
 };
 
 var bobFriend = {
