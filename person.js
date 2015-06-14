@@ -2,18 +2,17 @@ function Person(race, sex, environment, orientation, peers) {
     this.race = race;
     this.sex = sex;
     this.orientation = orientation;
-    this.associateAs = this.develoup(race, sex, environment, peers);
+    this.identifyAs = this.develoup(race, sex, environment, peers);
 }
 
 Person.prototype.develoup = function(race, sex, environment, peers) {
     if(this.orientation === 'cis') {
         return this.raceCheck(race, sex, environment, peers);
     } else {
-        if(this.sex === 'female') {
-            sex = 'male';
+        if(this.sex === peers.sex) {
             return this.raceCheck(race, sex, environment, peers);
         } else {
-            sex = 'female';
+            sex = peers.sex;
             return this.raceCheck(race, sex, environment, peers);
         }
     }
@@ -21,10 +20,10 @@ Person.prototype.develoup = function(race, sex, environment, peers) {
 
 Person.prototype.raceCheck = function(race, sex, environment, peers) {
     if(peers.race === this.race) {
-        return this.combine(race, sex, environment);
+        return this.combine(race, sex, peers.environment);
     } else {
         race = peers.race;
-        return this.combine(race, sex, environment);
+        return this.combine(race, sex, peers.environment);
     }
 };
 
@@ -33,10 +32,10 @@ Person.prototype.combine = function(race, sex, environment) {
 };
 
 var bobFriend = {
-    race: "white",
-    sex: "female",
-    environment: "middleclass",
+    race: "military",
+    sex: "helicopter",
+    environment: "attack",
     orientation:  "cis" 
 };
 var bob = new Person("african", "male", "middleclass", "trans", bobFriend);
-bob.associateAs;
+bob.identifyAs;
